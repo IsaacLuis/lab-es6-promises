@@ -132,7 +132,27 @@ makeBroccoli();
 
 // Bonus 2 - Promise all
 // ...
+async function makeBrusselsSprouts () {
+let step1 =  obtainInstruction("brusselsSprouts", 0)
+let step2 =  obtainInstruction("brusselsSprouts", 1)
+let step3 =  obtainInstruction("brusselsSprouts", 2)
+let step4 =  obtainInstruction("brusselsSprouts", 3)
+let step5 =  obtainInstruction("brusselsSprouts", 4)
+let step6 =  obtainInstruction("brusselsSprouts", 5)
+let step7 =  obtainInstruction("brusselsSprouts", 6)
+//let step8 =   document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels are ready!</li>`
 
 
-Promise.all(brusselsSprouts,0)
-  .then((step0) => {document.querySelector("#brusselsSprouts").innerHTML += `<li>${step0}</li>`});
+
+let steps = await Promise.all([step1,step2,step3,step4,step5,step6,step7])
+
+steps.forEach((el) => {
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${el}</li>`
+});
+ document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels are ready!</li>`;
+ document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+}
+makeBrusselsSprouts ()
+
+
+ 
